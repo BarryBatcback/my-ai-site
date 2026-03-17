@@ -6,15 +6,106 @@
     <title>My AI Assistant</title>
     <link rel="stylesheet" href="style.css">
 </head>
-<body class="dark-theme">
-    <div class="theme-toggle">
-        <button id="themeSwitcher" aria-label="Переключить тему">
-            <span class="light-icon">☀️</span>
-            <span class="dark-icon">🌙</span>
-        </button>
+<body>
+    <!-- Выдвижная панель слева -->
+    <div class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <h2>Меню</h2>
+            <button class="close-sidebar" id="closeSidebar">×</button>
+        </div>
+        
+        <div class="sidebar-content">
+            <!-- Профиль пользователя -->
+            <div class="user-profile" id="userProfile">
+                <div class="user-avatar">👤</div>
+                <div class="user-info">
+                    <div class="user-name" id="userName">Гость</div>
+                    <div class="user-plan" id="userPlan">Бесплатный тариф</div>
+                </div>
+            </div>
+            
+            <!-- Настройки AI -->
+            <div class="settings-section">
+                <h3>Настройки AI</h3>
+                
+                <div class="setting-item">
+                    <label>Температура (креативность)</label>
+                    <input type="range" id="temperature" min="0" max="1" step="0.1" value="0.7">
+                    <span class="setting-value" id="tempValue">0.7</span>
+                </div>
+                
+                <div class="setting-item">
+                    <label>Макс. длина ответа</label>
+                    <input type="number" id="maxTokens" value="500" min="100" max="2000" step="50">
+                </div>
+                
+                <div class="setting-item">
+                    <label>Стиль общения</label>
+                    <select id="aiStyle">
+                        <option value="professional">Профессиональный</option>
+                        <option value="friendly" selected>Дружелюбный</option>
+                        <option value="creative">Творческий</option>
+                    </select>
+                </div>
+            </div>
+            
+            <!-- Тарифы и подписка -->
+            <div class="settings-section">
+                <h3>Тарифы</h3>
+                
+                <div class="plan-card free-plan">
+                    <div class="plan-name">Бесплатный</div>
+                    <div class="plan-price">0 ₽/мес</div>
+                    <ul class="plan-features">
+                        <li>✓ 20 сообщений в день</li>
+                        <li>✓ Базовые настройки</li>
+                        <li>✗ Приоритетная поддержка</li>
+                    </ul>
+                    <button class="plan-btn current-plan" disabled>Текущий тариф</button>
+                </div>
+                
+                <div class="plan-card basic-plan">
+                    <div class="plan-name">Базовый</div>
+                    <div class="plan-price">299 ₽/мес</div>
+                    <ul class="plan-features">
+                        <li>✓ 500 сообщений в день</li>
+                        <li>✓ Все настройки AI</li>
+                        <li>✓ Приоритетная поддержка</li>
+                    </ul>
+                    <button class="plan-btn" onclick="alert('Переход на платную подписку')">Выбрать</button>
+                </div>
+                
+                <div class="plan-card pro-plan">
+                    <div class="plan-name">Про</div>
+                    <div class="plan-price">799 ₽/мес</div>
+                    <ul class="plan-features">
+                        <li>✓ Безлимитно</li>
+                        <li>✓ Все настройки AI</li>
+                        <li>✓ VIP поддержка 24/7</li>
+                    </ul>
+                    <button class="plan-btn" onclick="alert('Переход на платную подписку')">Выбрать</button>
+                </div>
+            </div>
+            
+            <!-- Донаты -->
+            <div class="settings-section">
+                <h3>Поддержать проект</h3>
+                <button class="donate-btn" onclick="window.open('https://yasobe.ru', '_blank')">
+                    ☕ Купить кофе разработчику
+                </button>
+                <p class="donate-text">Ваша поддержка помогает развивать AI</p>
+            </div>
+            
+            <!-- Кнопка выхода -->
+            <button class="logout-btn" id="logoutButton" style="display: none;">Выйти из аккаунта</button>
+        </div>
     </div>
 
+    <!-- Основной контент -->
     <main class="container">
+        <!-- Кнопка открытия меню -->
+        <button class="menu-toggle" id="menuToggle">☰</button>
+
         <div class="chat-container">
             <div class="chat-header">
                 <h1>AI Assistant</h1>
@@ -41,32 +132,33 @@
             </div>
         </div>
     </main>
-    <div class="settings-panel" id="settingsPanel">
-    <h3>Настройки AI</h3>
-    <div class="setting-item">
-        <label>Температура (креативность)</label>
-        <input type="range" id="temperature" min="0" max="1" step="0.1" value="0.7">
-        <span id="tempValue">0.7</span>
+
+    <!-- Модальное окно входа/регистрации -->
+    <div class="auth-modal" id="authModal">
+        <div class="auth-container">
+            <div class="auth-tabs">
+                <button class="auth-tab active" id="loginTab">Вход</button>
+                <button class="auth-tab" id="signupTab">Регистрация</button>
+            </div>
+            
+            <!-- Форма входа -->
+            <form id="loginForm" class="auth-form active">
+                <h2>Войти в аккаунт</h2>
+                <input type="email" id="loginEmail" placeholder="Email" required>
+                <input type="password" id="loginPassword" placeholder="Пароль" required>
+                <button type="submit" class="auth-btn">Войти</button>
+            </form>
+            
+            <!-- Форма регистрации -->
+            <form id="signupForm" class="auth-form">
+                <h2>Создать аккаунт</h2>
+                <input type="email" id="signupEmail" placeholder="Email" required>
+                <input type="password" id="signupPassword" placeholder="Пароль (мин. 6 символов)" required>
+                <button type="submit" class="auth-btn">Зарегистрироваться</button>
+            </form>
+        </div>
     </div>
-    <div class="setting-item">
-        <label>Макс. длина ответа</label>
-        <input type="number" id="maxTokens" value="500" min="100" max="2000">
-    </div>
-    <div class="setting-item">
-        <label>Стиль общения</label>
-        <select id="aiStyle">
-            <option value="professional">Профессиональный</option>
-            <option value="friendly">Дружелюбный</option>
-            <option value="creative">Творческий</option>
-        </select>
-    </div>
-</div>
-    <div class="donate-button">
-    <a href="ССЫЛКА_НА_ДОНАТЫ" target="_blank" class="donate-btn">
-        ☕ Поддержать проект
-    </a>
-</div>
-<button id="settingsToggle">⚙️ Настройки AI</button>
-    <script src="script.js"></script>
+
+    <script src="script.js" type="module"></script>
 </body>
 </html>

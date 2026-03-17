@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My AI Assistant</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="dark-theme">
+    <div class="theme-toggle">
+        <button id="themeSwitcher" aria-label="Переключить тему">
+            <span class="light-icon">☀️</span>
+            <span class="dark-icon">🌙</span>
+        </button>
+    </div>
+
+    <main class="container">
+        <div class="chat-container">
+            <div class="chat-header">
+                <h1>AI Assistant</h1>
+                <p class="subtitle">Ваш персональный помощник</p>
+            </div>
+
+            <div class="chat-messages" id="chatMessages">
+                <div class="message bot">
+                    <div class="message-content">
+                        Здравствуйте! Чем я могу вам помочь?
+                    </div>
+                </div>
+            </div>
+
+            <div class="chat-input-container">
+                <textarea 
+                    id="userInput" 
+                    placeholder="Введите ваш вопрос..." 
+                    rows="1"
+                ></textarea>
+                <button id="sendButton" class="send-btn">
+                    <span>➤</span>
+                </button>
+            </div>
+        </div>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>

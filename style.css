@@ -319,3 +319,119 @@ textarea:focus {
         max-width: 85%;
     }
 }
+/* Стили для авторизации */
+.auth-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2000;
+}
+
+.auth-container {
+    background-color: var(--dark-surface);
+    padding: 30px;
+    border-radius: 12px;
+    width: 90%;
+    max-width: 400px;
+}
+
+.light-theme .auth-container {
+    background-color: var(--light-surface);
+}
+
+.auth-tabs {
+    display: flex;
+    margin-bottom: 20px;
+    border-bottom: 1px solid var(--dark-border);
+}
+
+.light-theme .auth-tabs {
+    border-bottom-color: var(--light-border);
+}
+
+.auth-tab {
+    flex: 1;
+    padding: 10px;
+    background: none;
+    border: none;
+    color: var(--dark-text);
+    cursor: pointer;
+    font-size: 16px;
+    opacity: 0.7;
+}
+
+.light-theme .auth-tab {
+    color: var(--light-text);
+}
+
+.auth-tab.active {
+    opacity: 1;
+    border-bottom: 2px solid #007AFF;
+}
+
+.auth-form {
+    display: none;
+}
+
+.auth-form.active {
+    display: block;
+}
+
+.auth-form h2 {
+    margin-bottom: 20px;
+    font-size: 20px;
+}
+
+.auth-form input {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 15px;
+    border-radius: 8px;
+    border: 1px solid var(--dark-border);
+    background-color: var(--dark-bg);
+    color: var(--dark-text);
+}
+
+.light-theme .auth-form input {
+    border-color: var(--light-border);
+    background-color: var(--light-bg);
+    color: var(--light-text);
+}
+
+.auth-btn {
+    width: 100%;
+    padding: 12px;
+    background-color: #007AFF;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.auth-btn:hover {
+    background-color: #0056b3;
+}
+
+.logout-btn {
+    position: fixed;
+    top: 20px;
+    right: 100px;
+    padding: 8px 16px;
+    background-color: #ff4444;
+    color: white;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    z-index: 1000;
+}
+
+.logout-btn:hover {
+    background-color: #cc0000;
+}

@@ -599,3 +599,194 @@ textarea:focus {
         max-width: 85%;
     }
 }
+/* Статус подписки */
+.subscription-status {
+    background: linear-gradient(135deg, var(--bg-tertiary), var(--bg-secondary));
+    border-radius: 12px;
+    padding: 15px;
+    margin: 15px 0;
+    border: 1px solid var(--border-color);
+}
+
+.status-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.status-label {
+    font-size: 14px;
+    color: var(--text-secondary);
+}
+
+.status-badge {
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.status-badge.active {
+    background-color: var(--success-color);
+    color: white;
+}
+
+.status-badge.trial {
+    background-color: var(--accent-color);
+    color: white;
+}
+
+.status-badge.expired {
+    background-color: var(--danger-color);
+    color: white;
+}
+
+.status-badge.inactive {
+    background-color: var(--bg-tertiary);
+    color: var(--text-secondary);
+}
+
+.subscription-details {
+    margin-top: 15px;
+    padding-top: 15px;
+    border-top: 1px solid var(--border-color);
+}
+
+.detail-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 8px;
+    font-size: 13px;
+}
+
+.detail-label {
+    color: var(--text-secondary);
+}
+
+.detail-value {
+    color: var(--text-primary);
+    font-weight: 500;
+}
+
+.days-remaining {
+    color: var(--accent-color);
+    font-weight: 600;
+}
+
+.days-remaining.warning {
+    color: #ffa500;
+}
+
+.days-remaining.critical {
+    color: var(--danger-color);
+}
+
+.manage-subscription-btn {
+    width: 100%;
+    padding: 10px;
+    background: transparent;
+    border: 1px solid var(--accent-color);
+    color: var(--accent-color);
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 13px;
+    margin-top: 10px;
+    transition: all 0.3s ease;
+}
+
+.manage-subscription-btn:hover {
+    background-color: var(--accent-color);
+    color: white;
+}
+
+/* Подсказка об улучшении тарифа */
+.upgrade-prompt {
+    background: linear-gradient(135deg, var(--accent-color), #0056b3);
+    border-radius: 12px;
+    padding: 20px;
+    text-align: center;
+    color: white;
+}
+
+.upgrade-prompt p {
+    margin-bottom: 15px;
+    font-size: 14px;
+}
+
+.upgrade-btn {
+    background: white;
+    color: var(--accent-color);
+    border: none;
+    padding: 10px 20px;
+    border-radius: 25px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.upgrade-btn:hover {
+    transform: scale(1.05);
+}
+
+/* Прогресс-бар сообщений */
+.message-progress {
+    margin-top: 10px;
+    padding: 10px;
+    background-color: var(--bg-primary);
+    border-radius: 8px;
+}
+
+.progress-label {
+    display: flex;
+    justify-content: space-between;
+    font-size: 12px;
+    margin-bottom: 5px;
+    color: var(--text-secondary);
+}
+
+.progress-bar {
+    height: 6px;
+    background-color: var(--bg-tertiary);
+    border-radius: 3px;
+    overflow: hidden;
+}
+
+.progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--accent-color), #00C851);
+    border-radius: 3px;
+    transition: width 0.3s ease;
+}
+
+/* План карточек с подсветкой */
+.plan-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+}
+
+.plan-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px rgba(0, 122, 255, 0.2);
+}
+
+.plan-card.recommended::before {
+    content: "РЕКОМЕНДУЕМ";
+    position: absolute;
+    top: 10px;
+    right: -30px;
+    background-color: var(--accent-color);
+    color: white;
+    padding: 5px 30px;
+    font-size: 10px;
+    font-weight: 600;
+    transform: rotate(45deg);
+}
+
+.plan-card.active-plan {
+    border: 2px solid var(--accent-color);
+    box-shadow: 0 0 20px rgba(0, 122, 255, 0.3);
+}

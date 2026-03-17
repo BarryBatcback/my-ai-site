@@ -1,3 +1,8 @@
+// Инициализация Supabase (в начало файла)
+import { createClient } from 'https://esm.sh/@supabase/supabase-js@2'
+
+const supabase = createClient('https://zmbpbnyukbezpwoiguoq.supabase.co', 'sb_publishable_HpJZFZBoEK0haduxr2w93g_1f_7r6xn')
+
 class AIChat {
     constructor() {
         this.messagesContainer = document.getElementById('chatMessages');
@@ -146,6 +151,37 @@ class AIChat {
         */
     }
 }
+
+
+
+// Функция регистрации
+async function signUp(email, password) {
+    const { data, error } = await supabase.auth.signUp({
+        email: email,
+        password: password
+    })
+    return { data, error }
+}
+
+// Функция входа
+async function signIn(email, password) {
+    const { data, error } = await supabase.auth.signInWithPassword({
+        email: email,
+        password: password
+    })
+    return { data, error }
+}
+
+// Проверка авторизации перед отправкой к AI
+async function sendMessage() {
+    const { data: { user } } = await supabase.auth.getUser()
+    if (!user) {
+        alert('Пожалуйста, войдите в систему')
+        return
+    }
+    // Далее отправка сообщения к AI
+}
+
 
 // Инициализация при загрузке страницы
 document.addEventListener('DOMContentLoaded', () => {
